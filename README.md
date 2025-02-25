@@ -36,20 +36,15 @@ print(f"Test Labels Shape: {test_labels.shape}")    # (n_test,)
 The network consists of:
 	•	Input Layer: 784-dimensional vector (flattened 28×28 image).
 	•	Output Layer: 10 neurons with softmax activation (each representing a class probability).
-
-Loss Function (Cross-Entropy with L2 Regularization)
-
-\[
-f_{CE}(W, b) = -\frac{1}{n} \sum_{i=1}^{n} \sum_{k=1}^{10} y_k^{(i)} \log \hat{y}_k^{(i)} + \frac{\alpha}{2} \sum_{k=1}^{c} w_k^\top w_k
-\]
+	•	Loss Function (Cross-Entropy with L2 Regularization)
 
 ## Where:  
-- \( n \) = number of examples  
-- \( \alpha \) = regularization constant  
-- \( W \) = weight matrix  
-- \( b \) = bias vector  
-- \( \hat{y}_k \) = predicted probability for class \( k \)  
-- \( y_k \) = one-hot encoded true label  
+- n = number of examples  
+- alpha = regularization constant  
+- w1, w2 = weight matrices 
+- b1, b2 = bias vectors 
+- y_pred = predicted probability for class  
+- y = one-hot encoded true label  
 
 ## Training Strategy
 	•	Optimizer: Stochastic Gradient Descent (SGD)
@@ -60,48 +55,21 @@ f_{CE}(W, b) = -\frac{1}{n} \sum_{i=1}^{n} \sum_{k=1}^{10} y_k^{(i)} \log \hat{y
 	•	Batch size
 	•	Dataset Split: The training data is split into training and validation sets.
 
-## Training the Model with SGD
-
-def softmax(z):
-    exp_z = np.exp(z - np.max(z, axis=1, keepdims=True))  # Avoid overflow
-    return exp_z / np.sum(exp_z, axis=1, keepdims=True)
-
-def compute_loss(X, y, W, b, alpha):
-    n = X.shape[0]
-    logits = X @ W + b
-    y_pred = softmax(logits)
-    
-    # Cross-entropy loss
-    loss = -np.sum(y * np.log(y_pred + 1e-9)) / n
-    
-    # L2 Regularization
-    reg_loss = (alpha / 2) * np.sum(W ** 2)
-    
-    return loss + reg_loss
-
 ### Hyperparameter Optimization
 
-We optimize the same hyperparameters as in Homework 2 (Age Regression), testing at least 20 different combinations.
+We optimize testing at 12 different combinations.
 
 ### Example grid search:
 
-learning_rates = [0.01, 0.001, 0.0001]
-regularization_strengths = [0.01, 0.1, 1.0]
-batch_sizes = [32, 64, 128]
+mini_batches = [32, 64, 128]
+learning_rates = [1e-3, 1e-4]
+epochs = [5, 10, 20]
+l2_alphas = [1e-3, 1.0]
+hidden_size = [20, 40]
 
 ## Evaluation
 
-After training, the model is evaluated on the test set using accuracy as the main metric.
-
-def evaluate_model(X_test, y_test, W, b):
-    logits = X_test @ W + b
-    y_pred = np.argmax(softmax(logits), axis=1)
-    accuracy = np.mean(y_pred == np.argmax(y_test, axis=1))
-    print(f"Test Accuracy: {accuracy:.4f}")
-
-## Results & Analysis
-	•	Best hyperparameters found through tuning.
-	•	Accuracy on test set after final training.
+After training, the model is evaluated on the test set using validation loss and accuracy as the metrics.
 
 ## References
 	•	Fashion MNIST Dataset
