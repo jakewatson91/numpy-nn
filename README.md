@@ -39,15 +39,17 @@ The network consists of:
 
 Loss Function (Cross-Entropy with L2 Regularization)
 
-f_CE(W, b) = - (1/n) Σ Σ y_k(i) log(ŷ_k(i)) + (α/2) Σ w_k^T w_k
+\[
+f_{CE}(W, b) = -\frac{1}{n} \sum_{i=1}^{n} \sum_{k=1}^{10} y_k^{(i)} \log \hat{y}_k^{(i)} + \frac{\alpha}{2} \sum_{k=1}^{c} w_k^\top w_k
+\]
 
-### Where:
-	•	n = number of examples
-	•	α = regularization constant
-	•	W = weight matrix
-	•	b = bias vector
-	•	ŷ_k = predicted probability for class k
-	•	y_k = one-hot encoded true label
+## Where:  
+- \( n \) = number of examples  
+- \( \alpha \) = regularization constant  
+- \( W \) = weight matrix  
+- \( b \) = bias vector  
+- \( \hat{y}_k \) = predicted probability for class \( k \)  
+- \( y_k \) = one-hot encoded true label  
 
 ## Training Strategy
 	•	Optimizer: Stochastic Gradient Descent (SGD)
