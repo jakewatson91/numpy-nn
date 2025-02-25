@@ -44,13 +44,9 @@ The network consists of:
 - y = one-hot encoded true label  
 
 ## Training Strategy
-	•	Optimizer: Stochastic Gradient Descent (SGD)
-	•	Regularization: L2 weight decay (applied only to weights, not biases).
-	•	Hyperparameter Tuning:
-	•	Learning rate
-	•	Regularization strength (α)
-	•	Batch size
-	•	Dataset Split: The training data is split into training and validation sets.
+- Optimizer: Stochastic Gradient Descent (SGD)
+- Regularization: L2 weight decay (applied only to weights, not biases).
+- Hyperparameter Tuning
 
 ### Hyperparameter Optimization
 
