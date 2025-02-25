@@ -11,15 +11,11 @@ The labels correspond to one of 10 fashion categories.
 
 ## Download the Dataset
 
-Use the following links to download Fashion MNIST:
-	•	Train Images
-	•	Train Labels
-	•	Test Images
-	•	Test Labels
+Use the links provided in the notebook to download datasetes
 
 ## Loading the Data in Python
 
-import numpy as np
+```import numpy as np
 
 train_images = np.load("fashion_mnist_train_images.npy")
 train_labels = np.load("fashion_mnist_train_labels.npy")
@@ -30,6 +26,7 @@ print(f"Train Images Shape: {train_images.shape}")  # (n_train, 784)
 print(f"Train Labels Shape: {train_labels.shape}")  # (n_train,)
 print(f"Test Images Shape: {test_images.shape}")    # (n_test, 784)
 print(f"Test Labels Shape: {test_labels.shape}")    # (n_test,)
+```
 
 ## Model Architecture
 
