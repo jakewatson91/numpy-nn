@@ -65,6 +65,5 @@ hidden_size = [20, 40]
 After training, the model is evaluated on the test set using validation loss and accuracy as the metrics.
 
 ## References
-	•	Fashion MNIST Dataset
-	•	Goodfellow et al. (2016) – Deep Learning
-	•	Bishop (2006) – Pattern Recognition and Machine Learning
+- Goodfellow et al. (2016) – Deep Learning
+- Bishop (2006) – Pattern Recognition and Machine Learning
